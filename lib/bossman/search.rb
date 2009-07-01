@@ -1,10 +1,10 @@
 module BOSSMan
-  class Search 
+  class Search
     class << self
       DEFAULT_COUNT = 10
       DEFAULT_START = 0
-      
-      def web(query, options = {})    
+
+      def web(query, options = {})
         method = "web"
         options.merge!(return_options(options))
         return REST.get(method, query, options)
@@ -12,7 +12,7 @@ module BOSSMan
 
       def images(query, options = {})
         method = "images"
-        options.merge!(return_options(options))        
+        options.merge!(return_options(options))
         return REST.get(method, query, options)
       end
 
@@ -27,7 +27,13 @@ module BOSSMan
         options.merge!(return_options(options))
         return REST.get(method, query, options)
       end
-      
+
+      def links(query, options = {})
+        method = "se_inlink"
+        options.merge!(return_options(options))
+        return REST.get(method, query, options)
+      end
+
       private
       def return_options(options)
         count = options[:count] ? options[:count] : DEFAULT_COUNT
